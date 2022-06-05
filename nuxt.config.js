@@ -1,7 +1,7 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'dynamic',
+    title: 'create_dynamic_forms',
     htmlAttrs: {
       lang: 'en'
     },
