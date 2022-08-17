@@ -89,6 +89,7 @@ export default {
         color: rgb(236, 112, 112);
         border: none;
         padding: 15px 32px;
+        margin: 2%;
         text-align: center;
         text-decoration: none;
         display: inline-block;

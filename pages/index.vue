@@ -2,24 +2,11 @@
   <div id="centerdParentDiv">
 
     <div id="childDivWith60">
-
-      <!-- This needs updation, May need to update it to take input separately and create the array of json -->
-      <!-- Not working correctly, But the modai is working -->
-      <b-form-textarea
-        id="formComp"
-        v-model="formData"
-        placeholder="Enter something..."
-        rows="10"
-        max-rows="600"
-      >
-      </b-form-textarea>
-
+      <FormJsonInput />
       <!-- Below code is fine and okay -->
-      <div id="centerThisDiv">
-        <button type="submit" id="submitButton" @click="validateFormData" v-if="validated">Submit</button>
-      </div>
 
-      <b-button @click="$bvModal.show('modal-scoped')">Open Modal</b-button>
+
+      <button @click="$bvModal.show('modal-scoped')" id="submitButton">Open Modal</button>
       <b-modal id="modal-scoped" size="xl">
         <DynamicForm />
         <template #modal-footer>
@@ -33,22 +20,27 @@
 
 <script>
 import DynamicForm from '../components/DynamicForm.vue';
+import FormJsonInput from '../components/FormJsonInput.vue';
 export default {
     name: "IndexPage",
-    components: { DynamicForm },
+    components: { DynamicForm, FormJsonInput },
 
     data() {
         return {
             validated: false,
-            formData: [{}],
+            formData: "",
             inputTypeValues: ["input", "text-area", "date"]
         }
     },
     methods: {
+
+      // Have found another apprdach, Dumping this up
       validateFormData() {
         let errorMessage = "Please fix your json, Detailed error message will be provided in future"
+        alert(typeof(this.formData))
+        alert(typeof(JSON.parse(this.formData)))
 
-        let form = JSON.parse(JSON.stringify(this.formData))
+        let form = JSON.parse(this.formData)
         if (form.length == 0){
           alert(errorMessage)
           return;
