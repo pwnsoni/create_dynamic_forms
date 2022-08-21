@@ -27,7 +27,7 @@
         </div>
         <div id="centerThisDiv">
             <button id="submitButton" @click="addMoreRow()">Add More Rows</button>
-            <button type="submit" id="submitButton">Submit</button>
+            <button type="submit" id="submitButton" @click="onSubmit()">Submit</button>
         </div>
 
         <p> {{formDataResult}}</p>
@@ -48,6 +48,11 @@ export default {
             this.formDataResult.push(this.formData);
             this.formData ={fieldName: "", inputType: ""};
             alert("done")
+        },
+
+        onSubmit(){
+            alert('in Submit')
+            this.$store.dispatch('UPDATE_FORMDATA', this.formDataResult)
         }
     }
 }
